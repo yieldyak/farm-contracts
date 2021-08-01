@@ -1,3 +1,5 @@
+![Tests](https://github.com/yieldyak/farm-contracts/actions/workflows/node.js.yml/badge.svg)
+
 # Yield Yak Farm Contracts
 Smart contracts for the (Yield Yak)[https://yieldyak.com/] farms
 

@@ -23,6 +23,7 @@ describe("MiniYak", async function() {
     it("Can be deployed", async function() {
         const factory = await ethers.getContractFactory("MiniYak")
         miniYakContract = await factory.connect(owner).deploy()
+        // await expect(miniYakContract.deployed()).to.be.reverted
         await miniYakContract.deployed()
     })
 
