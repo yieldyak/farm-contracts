@@ -1,4 +1,10 @@
 {
   "require": ["hardhat/register", "ts-node/register/transpile-only"],
-  "timeout": 1e6
+  "timeout": 1e6,
+  "reporter": "mochawesome",
+  "reporterOptions": {
+    "overwrite": true,
+    "reportTitle": "YieldYak Farm Contracts",
+    "showPassed": true
+  }
 }

@@ -50,7 +50,9 @@ const config: HardhatUserConfig = {
   gasReporter: {
     enabled: true,
     showTimeSpent: true, 
-    gasPrice: 225
+    outputFile: "gasReporterOutput.json",
+    gasPrice: 225,
+    url: "http://127.0.0.1:8545/"
   },
 }
 
