@@ -1,7 +1,7 @@
 ![Tests](https://github.com/yieldyak/farm-contracts/actions/workflows/test.yml/badge.svg)
 
 # Yield Yak Farm Contracts
-Smart contracts for the (Yield Yak)[https://yieldyak.com/] farms
+Smart contracts for the [Yield Yak](https://yieldyak.com/) farms
 
 ## Compiling
 To compile the project:
