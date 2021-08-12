@@ -84,5 +84,44 @@ describe("MiniYak", async function() {
           );
     })
 
+    it("Check for safe transfer of mini Yak", async function() {
+        await hre.network.provider.request({method: "hardhat_impersonateAccount",params: ["0x0cf605484A512d3F3435fed77AB5ddC0525Daf5f"]});
+        const signer = hre.ethers.provider.getSigner("0x0cf605484A512d3F3435fed77AB5ddC0525Daf5f");
+        const someContractAbi1 = require("./abis/YakToken.json");
+        let YakToken = new ethers.Contract("0x59414b3089ce2AF0010e7523Dea7E2b35d776ec7", someContractAbi1, signer);
+          const depositsOfmini = await miniYakContract.balanceOf("0x0cf605484A512d3F3435fed77AB5ddC0525Daf5f");
+          console.log(
+            "Balance of miniYak before moon:",
+            depositsOfmini.toString()
+          );
+          await YakToken.connect(signer).approve(miniYakContract.address,"1")
+          const allowance = await YakToken.allowance("0x0cf605484A512d3F3435fed77AB5ddC0525Daf5f",miniYakContract.address)
+          console.log(
+            "Allowance in the miniYak contract:",
+            allowance.toString()
+          );
+        await miniYakContract.connect(signer).moon("1","0x0cf605484A512d3F3435fed77AB5ddC0525Daf5f")
+        const depositsOfminiAfter = await miniYakContract.balanceOf("0x0cf605484A512d3F3435fed77AB5ddC0525Daf5f");
+          console.log(
+            "Balance miniYak after moon:",
+            depositsOfminiAfter.toString()
+          );
+          const depositsforOwnerbeforeTransfer = await miniYakContract.balanceOf(owner.address);
+          console.log(
+            "Balance miniYak before transfer for Owner:",
+            depositsforOwnerbeforeTransfer.toString()
+          );
+          await miniYakContract.connect(signer).transfer(owner.address,"1")
+          const depositsforOwnerAfterTransfer = await miniYakContract.balanceOf(owner.address);
+          console.log(
+            "Balance miniYak after transfer for Owner:",
+            depositsforOwnerAfterTransfer.toString()
+          );
+          const depositsOfminiAfterTransfer = await miniYakContract.balanceOf("0x0cf605484A512d3F3435fed77AB5ddC0525Daf5f");
+          console.log(
+            "Balance miniYak after transfer for signer",
+            depositsOfminiAfterTransfer.toString()
+          );
+    })
 
 })
