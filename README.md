@@ -23,3 +23,14 @@ On a separated terminal you can then run the tests
 All tests should be passing at all times.
 
 To create new tests, refer to the ./test folder.
+
+## Contracts
+
+### Main Net
+```bash
+MiniYak: 0xf7e9Fa54F7C988d985Bb9F3034691c72fbf705cA
+```
+### Fuji
+```bash
+MiniYak: 0xb3Cae31c087af06Ec1dE2cdBBE296B42E68B9d5d
+```

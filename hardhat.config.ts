@@ -2,6 +2,7 @@ import { HardhatUserConfig, task } from "hardhat/config"
 import "@nomiclabs/hardhat-waffle"
 import "hardhat-gas-reporter"
 import "hardhat-contract-sizer"
+import "hardhat-deploy"
 
 task("accounts", "Prints the list of accounts", async (args, hre) => {
   const accounts = await hre.ethers.getSigners()
@@ -16,6 +17,11 @@ task("accounts", "Prints the list of accounts", async (args, hre) => {
 
 const config: HardhatUserConfig = {
   solidity: "0.8.2",
+  namedAccounts: {
+    deployer: {
+      default: 0,
+    }
+  },
   networks: {
     hardhat: {
       gasPrice: 225000000000,
