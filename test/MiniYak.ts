@@ -21,7 +21,7 @@ describe("MiniYak", async function () {
         let Router = new ethers.Contract(PGL_ROUTER_ADDRESS, pglRouterABI, account);
         await Router.connect(account).swapExactAVAXForTokens("140399914278898577", path_for_router,
             account.address, "1628769746438", { from: account.address, value: "123950399914278898577" });
-      }
+    }
 
     before(async function () {
         //this makes sure the newest changes are compiled and pushed to the fork node
@@ -33,22 +33,12 @@ describe("MiniYak", async function () {
         account = (await ethers.getSigners())[1]
         const factory = await ethers.getContractFactory("MiniYak")
         miniYakContract = await factory.connect(owner).deploy()
-        // await expect(miniYakContract.deployed()).to.be.reverted
         await miniYakContract.deployed()
         await intial_data_setup().catch();
-        
     })
 
-    // it("Can be deployed", async function() {
-    //     const factory = await ethers.getContractFactory("MiniYak")
-    //     miniYakContract = await factory.connect(owner).deploy()
-    //     // await expect(miniYakContract.deployed()).to.be.reverted
-    //     await miniYakContract.deployed()
-    // })
-
     it("Check for decimals", async function () {
-        expect(await miniYakContract.decimals()).to.eq(
-            12)
+        expect(await miniYakContract.decimals()).to.eq(12)
     })
 
     it("Check for Minimum amount Yak to be swapped", async function () {
