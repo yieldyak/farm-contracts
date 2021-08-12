@@ -7,7 +7,7 @@ import "../libs/openzeppelin/utils/math/Math.sol";
 
 contract MiniYak is ERC20 {
     using SafeERC20 for IERC20;
-    constructor() ERC20("MiniYak", "MYAK") {}
+    constructor() ERC20("MiniYAK", "mYAK") {}
     address public YAK = 0x59414b3089ce2AF0010e7523Dea7E2b35d776ec7;
 
     /**
@@ -19,9 +19,9 @@ contract MiniYak is ERC20 {
         return 12;
     }
 
-        /**
+    /**
      * @notice moons Yak to mini Yak (mints mini Yak )
-     * @param amount amount of YAK that will be mooned 
+     * @param amount amount of YAK that will be mooned
      * @param to address of caller or the address to which miniYAK would be transferred to
      */
     function moon(uint amount, address to) external {
@@ -30,10 +30,9 @@ contract MiniYak is ERC20 {
         _mint(to, mint_amount);
     }
 
-
     /**
      * @notice unmoons mini Yak to Yak and burns mini Yak
-     * @param amount amount of miniyak 
+     * @param amount amount of miniyak
      * @param to address of caller or the address to which YAK would be transferred to
      */
     function unmoon(uint amount, address to) external {
@@ -41,6 +40,4 @@ contract MiniYak is ERC20 {
         _burn(msg.sender, burn_amount);
         IERC20(YAK).safeTransfer(to, burn_amount);
     }
-
-
 }
