@@ -9,7 +9,7 @@ import "../libs/openzeppelin/utils/math/Math.sol";
 contract MiniYak is ERC20Permit {
     using SafeERC20 for IERC20;
     constructor() ERC20("MiniYAK", "mYAK")
-    ERC20Permit("miniYak") {}
+    ERC20Permit("MiniYAK") {}
     address public YAK = 0x59414b3089ce2AF0010e7523Dea7E2b35d776ec7;
 
     /**
