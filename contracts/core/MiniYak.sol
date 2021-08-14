@@ -66,5 +66,4 @@ contract MiniYak is ERC20 {
         _burn(msg.sender, burn_amount);
         IERC20(YAK).safeTransfer(to, burn_amount);
     }
-
 }
