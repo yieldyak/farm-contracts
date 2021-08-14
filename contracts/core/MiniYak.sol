@@ -54,4 +54,16 @@ contract MiniYak is ERC20Permit {
         _burn(msg.sender, burn_amount);
         IERC20(YAK).safeTransfer(to, burn_amount);
     }
+
+    /**
+     * @notice approves miniYak and unmoons mini Yak to Yak and burns mini Yak
+     * @param amount amount of miniyak
+     * @param to address of caller or the address to which YAK would be transferred to
+     */
+    function unmoonWithPermit(uint amount, address to, uint deadline, uint8 v, bytes32 r, bytes32 s) external {
+        IERC20Permit(address(this)).permit(msg.sender, address(this), amount, deadline, v, r, s);
+        uint burn_amount = Math.min(amount, this.balanceOf(msg.sender));
+        _burn(msg.sender, burn_amount);
+        IERC20(YAK).safeTransfer(to, burn_amount);
+    }
 }
