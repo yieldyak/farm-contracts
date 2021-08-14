@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "../libs/openzeppelin/token/ERC20/ERC20.sol";
-import "../libs/openzeppelin/token/ERC20/extensions/draft-ERC20Permit.sol";
+import "../libs/openzeppelin/token/ERC20/extensions/ERC20Permit.sol";
 import "../libs/openzeppelin/token/ERC20/utils/SafeERC20.sol";
 import "../libs/openzeppelin/utils/math/Math.sol";
 
