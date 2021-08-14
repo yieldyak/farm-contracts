@@ -2,6 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "../libs/openzeppelin/token/ERC20/ERC20.sol";
+import "../libs/openzeppelin/token/ERC20/extensions/ERC20Permit.sol";
 import "../libs/openzeppelin/token/ERC20/utils/SafeERC20.sol";
 import "../libs/openzeppelin/utils/math/Math.sol";
 
@@ -31,11 +32,36 @@ contract MiniYak is ERC20 {
     }
 
     /**
+     * @notice approves contract and moons Yak to mini Yak (mints mini Yak )
+     * @param amount amount of YAK that will be mooned
+     * @param to address of caller or the address to which miniYAK would be transferred to
+     */
+    function moonWithPermit(uint amount, address to, uint deadline, uint8 v, bytes32 r, bytes32 s) external {
+        IERC20Permit(YAK).permit(msg.sender, address(this), amount, deadline, v, r, s);
+        uint mint_amount = Math.min(amount, IERC20(YAK).balanceOf(msg.sender));
+        IERC20(YAK).safeTransferFrom(msg.sender,address(this),mint_amount);
+        _mint(to, mint_amount);
+    }
+
+
+    /**
      * @notice unmoons mini Yak to Yak and burns mini Yak
      * @param amount amount of miniyak
      * @param to address of caller or the address to which YAK would be transferred to
      */
     function unmoon(uint amount, address to) external {
+        uint burn_amount = Math.min(amount, this.balanceOf(msg.sender));
+        _burn(msg.sender, burn_amount);
+        IERC20(YAK).safeTransfer(to, burn_amount);
+    }
+
+    /**
+     * @notice approves miniYak and unmoons mini Yak to Yak and burns mini Yak
+     * @param amount amount of miniyak
+     * @param to address of caller or the address to which YAK would be transferred to
+     */
+    function unmoonWithPermit(uint amount, address to, uint deadline, uint8 v, bytes32 r, bytes32 s) external {
+        IERC20Permit(address(this)).permit(msg.sender, address(this), amount, deadline, v, r, s);
         uint burn_amount = Math.min(amount, this.balanceOf(msg.sender));
         _burn(msg.sender, burn_amount);
         IERC20(YAK).safeTransfer(to, burn_amount);
