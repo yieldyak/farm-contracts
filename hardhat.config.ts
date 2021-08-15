@@ -3,6 +3,8 @@ import "@nomiclabs/hardhat-waffle"
 import "hardhat-gas-reporter"
 import "hardhat-contract-sizer"
 import "hardhat-deploy"
+import "@nomiclabs/hardhat-ethers"
+import "./tasks/GondolaDeploy"
 
 task("accounts", "Prints the list of accounts", async (args, hre) => {
   const accounts = await hre.ethers.getSigners()
@@ -32,7 +34,7 @@ const config: HardhatUserConfig = {
       },
       accounts: {
         accountsBalance: "1000000000000000000000000000000", 
-        count: 50
+        count: 50 
       }
     },
     fuji: {
