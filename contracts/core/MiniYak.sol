@@ -2,12 +2,13 @@
 pragma solidity ^0.8.0;
 
 import "../libs/openzeppelin/token/ERC20/ERC20.sol";
+import "../libs/openzeppelin/token/ERC20/extensions/ERC20Permit.sol";
 import "../libs/openzeppelin/token/ERC20/utils/SafeERC20.sol";
 import "../libs/openzeppelin/utils/math/Math.sol";
 
-contract MiniYak is ERC20 {
+contract MiniYak is ERC20Permit {
     using SafeERC20 for IERC20;
-    constructor() ERC20("MiniYAK", "mYAK") {}
+    constructor() ERC20("MiniYAK", "mYAK") ERC20Permit("MiniYAK") {}
     address public YAK = 0x59414b3089ce2AF0010e7523Dea7E2b35d776ec7;
 
     /**
@@ -29,6 +30,19 @@ contract MiniYak is ERC20 {
         IERC20(YAK).safeTransferFrom(msg.sender,address(this),mint_amount);
         _mint(to, mint_amount);
     }
+
+    /**
+     * @notice approves contract and moons Yak to mini Yak (mints mini Yak )
+     * @param amount amount of YAK that will be mooned
+     * @param to address of caller or the address to which miniYAK would be transferred to
+     */
+    function moonWithPermit(uint amount, address to, uint deadline, uint8 v, bytes32 r, bytes32 s) external {
+        IERC20Permit(YAK).permit(msg.sender, address(this), amount, deadline, v, r, s);
+        uint mint_amount = Math.min(amount, IERC20(YAK).balanceOf(msg.sender));
+        IERC20(YAK).safeTransferFrom(msg.sender,address(this),mint_amount);
+        _mint(to, mint_amount);
+    }
+
 
     /**
      * @notice unmoons mini Yak to Yak and burns mini Yak
