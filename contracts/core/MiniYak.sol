@@ -1,4 +1,4 @@
-//SPDX-License-Identifier: GPL-3.0
+// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;
 
 import "../libs/openzeppelin/token/ERC20/ERC20.sol";
@@ -8,7 +8,7 @@ import "../libs/openzeppelin/utils/math/Math.sol";
 
 contract MiniYak is ERC20Permit {
     using SafeERC20 for IERC20;
-    constructor() ERC20("MiniYAK", "mYAK") ERC20Permit("MiniYAK") {}
+    constructor() ERC20("MiniYAK", "mYAK") ERC20Permit("MiniYak") {}
     address public YAK = 0x59414b3089ce2AF0010e7523Dea7E2b35d776ec7;
 
     /**
@@ -54,4 +54,5 @@ contract MiniYak is ERC20Permit {
         _burn(msg.sender, burn_amount);
         IERC20(YAK).safeTransfer(to, burn_amount);
     }
+
 }
