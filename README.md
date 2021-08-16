@@ -1,3 +1,4 @@
+![Tests](https://github.com/yieldyak/farm-contracts/actions/workflows/test.yml/badge.svg)
 
 # MiniYak
 MiniYak is an ERC-20 compliant token. The contract logic is immutable and includes no ability to mint tokens, burn tokens or otherwise change supply.
@@ -20,8 +21,6 @@ The MiniYak Stable Farm is deployed using Gondola's implementation, details belo
     Swap: 0x9a5E33180D809A69d9cCc0f153D1a45D9149d258
     LPToken: 0x79F8768216FC1697FF4D04c4F3a3034FbC0B6d52
 ```
-
-![Tests](https://github.com/yieldyak/farm-contracts/actions/workflows/test.yml/badge.svg)
 
 # Yield Yak Farm Contracts
 Smart contracts for the [Yield Yak](https://yieldyak.com/) farms
