@@ -17,9 +17,9 @@ The token also exists in the Fuji network at `0xf8Af852F04077Aa372BCA5e844365ed7
 
 The MiniYak Stable Farm is deployed using Gondola's implementation, details below:
 ```YAML
-    TxID: 0xd115245a6049ee28ed7ce68ca01584efb67977c7bd1c77231d652c75550ad342
-    Swap: 0x9a5E33180D809A69d9cCc0f153D1a45D9149d258
-    LPToken: 0x79F8768216FC1697FF4D04c4F3a3034FbC0B6d52
+    TxID: 0xb8d6d37925fb96ec08330a9b79be6db26538efff03d9534beed645347fdb35c6
+    Swap: 0xd72Dc856868f964D37D01CeA7A7a3c1F4da4F98f
+    LPToken: 0x7f1e6A8730fEC77f27DAEECD82E1941518383a62
 ```
 
 # Yield Yak Farm Contracts

@@ -8,7 +8,7 @@ task("deployMiniYakFarm", "Deploys the MiniYak/YakToken farm in Gondola", async 
   const swapAddress = "0x898A5b9968D50b32A57911eEdd0480ac0C5774bc";
   const miniYakAddress = "0xdDAaAD7366B455AfF8E7c82940C43CEB5829B604";
   const yakTokenAddress = "0x59414b3089ce2AF0010e7523Dea7E2b35d776ec7";
-  const INITIAL_A = 40;
+  const INITIAL_A = 100;
   const SWAP_FEE = 2e6;
   const ADMIN_FEE = 0;
   const WITHDRAW_FEE = 0;
@@ -38,7 +38,7 @@ task("deployMiniYakFarm", "Deploys the MiniYak/YakToken farm in Gondola", async 
   const mySigner = (await ethers.getSigners())[0];
   const previousBalance = await mySigner.getBalance()
   const txReceipt = await swapDeployer.deploy(
-    swapAddress, [miniYakAddress, yakTokenAddress], [12, 18],
+    swapAddress, [miniYakAddress, yakTokenAddress], [18, 18],
     "Gondola YAK/mYAK (gondolaYAKPool)", "gondolaYAKPool", INITIAL_A, SWAP_FEE, ADMIN_FEE,
     WITHDRAW_FEE, lpTokenAddress
   )

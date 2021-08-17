@@ -20,7 +20,7 @@ describe("MiniYak", async function () {
     const intial_data_setup = async () => {
         let Router = new ethers.Contract(PGL_ROUTER_ADDRESS, pglRouterABI, account);
         await Router.connect(account).swapExactAVAXForTokens("140399914278898577", path_for_router,
-            account.address, "1628769746438", { from: account.address, value: "123950399914278898577" })
+            account.address, "1628769746438", { from: account.address, value: "1239503999142788985770" })
             return;
     }
 
