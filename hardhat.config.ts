@@ -33,7 +33,7 @@ const config: HardhatUserConfig = {
         enabled: true
       },
       accounts: {
-        accountsBalance: "1000000000000000000000000000000", 
+        accountsBalance: "10000000000000000000000000000000000", 
         count: 50 
       }
     },
