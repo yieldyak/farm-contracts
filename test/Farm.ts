@@ -42,7 +42,7 @@ describe("Farm", async function () {
         miniYakSwap = await ethers.getContractAt("ISwap", miniYakSwapAddress)
     });
     
-    [100, 1000, 100000000, "1000000000000000000"].forEach(amount => {
+    [1, 100, 1000, 100000000, "100000000000000000"].forEach(amount => {
         it(`Can swap 1:1 amount ${amount}`, async function() {
             // this adds funds to the miniYakSwap and also to the account(signers[0])
             await fundMiniYakSwap("0xd2f01cd87a43962fd93c21e07c1a420714cc94c9", miniYakSwap.address, miniYakToken.address, yakToken.address)
