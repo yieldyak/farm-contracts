@@ -44,9 +44,7 @@ export async function fundMiniYakSwap(yakAvaxPairAddress: string, miniYakSwapAdd
     const miniYakSwap = await ethers.getContractAt("ISwap", miniYakSwapAddress);
     const mySigner = (await ethers.getSigners())[0]
     await yakToken.approve(miniYakSwap.address, ethers.constants.MaxUint256);
-    await miniYakToken.approve(miniYakSwap.address, ethers.constants.MaxUint256);
-    // 100e18
-    await fundTokenFromAVAXPair(yakAvaxPairAddress, BigNumber.from("10000000000000000000"), mySigner)
+    await miniYakToken.approve(miniYakSwap.address, ethers.constants.MaxUint256);    await fundTokenFromAVAXPair(yakAvaxPairAddress, BigNumber.from("10000000000000000000"), mySigner)
     yakToken.approve(miniYakToken.address, ethers.constants.MaxUint256);
     miniYakToken.moon((await yakToken.balanceOf(mySigner.address)).div(100), mySigner.address)
     let miniYakBalance = await miniYakToken.balanceOf(mySigner.address)
